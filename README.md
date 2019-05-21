@@ -1,2 +1,2 @@
 # ASCnotes
-A terminal-based program I use to take notes
+A terminal-based program made in lua I use to take notes.
