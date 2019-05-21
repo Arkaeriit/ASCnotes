@@ -1,7 +1,11 @@
 #!/usr/local/bin/lua
 
-listFonc={reboot="~/.ASC/notes/reboot",data="~/.ASC/notes/data"}
-dofile("~/.ASC/notes/fonctions.lua")
+f=io.popen("echo $HOME","r")
+home=f:read()
+f:close()
+
+listFonc = {reboot = home.."/.ASC/notes/reboot" , data = home.."/.ASC/notes/data"}
+dofile(home.."/.ASC/notes/fonctions.lua")
 
 function ajout(self)
   local str=""
