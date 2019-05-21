@@ -1,4 +1,4 @@
-function convertFichTable(fichier)
+function convertFichTable(fichier) --Créé une table dont le nème élément est la nème ligne de fichier
 	local tab={}
 	local f=io.open(fichier,"r")
 	local num=1
@@ -16,7 +16,7 @@ function convertFichTable(fichier)
 	return tab
 end
 
-function convertTableFich(tabl,path)  --permet d'enregistrer les une table en un fichier
+function convertTableFich(tabl,path)  --permet d'enregistrer une table en un fichier
   local f=io.open(path,"w")
   for i=1,#tabl do
   	f:write(tostring(tabl[i])..'\n')
@@ -39,37 +39,9 @@ function decoupeStr(str,char) --comme le str.split de python
   return ret
 end string.decoupeStr=decoupeStr
 
-function serializeToString(o,tabulation)  --transorme o en string, mettre "" pour la tabulation
-  if not tabulation then
-    tabulation=""
-  end
-  local str=""
-  local t = type(o)
-  if t == "number" or t == "string" or t == "boolean" or
-    t == "nil" then
-    str=string.format("%q", o)
-  elseif t == "table" then
-    str="{\n"
-    for k,v in pairs(o) do
-      if type(k)=="string" then
-        index=k
-      else
-        index="["..serializeToString(k).."]"
-      end
-      str=str..tabulation.." "..index.." = "
-      str=str..serializeToString(v,tabulation.."  ")
-      str=str..tabulation..",\n"
-    end
-    str=str..tabulation.."}\n"
-  else
-    error("cannot serialize a " .. type(o))
-  end
-  return str
-end
-
 --le datafile est la liste des notes. Il se comporte comme des lignes de textes. Pour chaque nouvelle note la ligne commence par $ sinon elle commenc par un espace
 
-function getData(datafile)
+function getData(datafile) --décriptage du fichier où les notes sont stockées
 	local tab=convertFichTable(datafile)
 	local i=1
 	while i<=#tab do

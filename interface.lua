@@ -1,18 +1,18 @@
 #!/usr/local/bin/lua
 
-f=io.popen("echo $HOME","r")
+f=io.popen("echo $HOME","r") --récupération du nom du sossier maison
 home=f:read()
 f:close()
 
-listFonc = {reboot = home.."/.ASC/notes/reboot" , data = home.."/.ASC/notes/data"}
+listFonc = {reboot = home.."/.ASC/notes/reboot" , data = home.."/.ASC/notes/data"} --initialisation et recherche du nom des fichier utiles
 dofile(home.."/.ASC/notes/fonctions.lua")
 
-function ajout(self)
+function ajout(self)    --fonctions pour comuniquer avec fonctions.lua 
   local str=""
   repeat
     local ajout=io.read()
     if ajout ~= "" then
-      str=str.."\n "..ajout
+      str=str.."\n "..ajout --le "\n " ser à passer à la ligne et à écrire le caractère de padding crutial à la lecture du fichier data
     end
   until ajout==""
   addelement(str,self.data)

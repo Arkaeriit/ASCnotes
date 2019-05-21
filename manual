@@ -10,6 +10,6 @@ Use ~/.ASC/notes/interface.lua reset    to be able to read your notes using the 
 
 To use this progral I put 
 ~/.ASC/notes/interface.lua read 
-in my .bashrc file and I crate cron jobs which use the comand
+in my .bashrc file and I crate cron jobs which use the command
 Use ~/.ASC/notes/interface.lua reset
 every time I restart my computer and every 6 hours
