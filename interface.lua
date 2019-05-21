@@ -17,7 +17,7 @@ function ajout(self)    --fonctions pour comuniquer avec fonctions.lua
   until ajout==""
   addelement(str,self.data)
 end listFonc["add"]=ajout
-listFonc["add"]=ajout
+listFonc["ajout"]=ajout
 
 function resetO(self)
   reset(self.reboot)
