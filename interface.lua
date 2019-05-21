@@ -4,7 +4,8 @@ f=io.popen("echo $HOME","r") --récupération du nom du sossier maison
 home=f:read()
 f:close()
 
-listFonc = {reboot = home.."/.ASC/notes/reboot" , data = home.."/.ASC/notes/data"} --initialisation et recherche du nom des fichier utiles
+listFonc = {reboot = home.."/.ASC/notes/reset" , data = home.."/.ASC/notes/data"} --initialisation et recherche du nom des fichier utiles. Dans data se trouvent les notes et reset sert à savoir si on peut utiliser l'argument read.
+
 dofile(home.."/.ASC/notes/fonctions.lua")
 
 function ajout(self)    --fonctions pour comuniquer avec fonctions.lua 
