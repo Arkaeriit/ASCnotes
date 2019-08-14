@@ -8,14 +8,14 @@ To install this program just do
 make && make install
 ```
 The basic way to use this program are the following:
-*Use `ASCnotes add`       to take a note
-*Use `ASCnotes readF`    to read your notes
-*Use `ASCnotes del n`    to delete the n-th note you took
++Use `ASCnotes add`       to take a note
++Use `ASCnotes readF`    to read your notes
++Use `ASCnotes del n`    to delete the n-th note you took
 
 
 To use the program automaticaly, as I intended, there is more option:
-*Use `ASCnotes read `    to read your notes once
-*Use `ASCnotes reset`    to be able to read your notes using the read option again
++Use `ASCnotes read `    to read your notes once
++Use `ASCnotes reset`    to be able to read your notes using the read option again
 
 To use this progral I put 
 ```bash
