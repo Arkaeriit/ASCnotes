@@ -5,7 +5,7 @@ A terminal-based program made in lua I use to take notes.
 
 To install this program just do
 ```bash
-make && make install
+make && sudo make install
 ```
 The basic way to use this program are the following:
 * Use `ASCnotes add`       to take a note

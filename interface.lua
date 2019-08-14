@@ -42,6 +42,9 @@ f = io.open(listFonc.reboot,"r")
 g = io.open(listFonc.data,"r")
 if not(g and f) then
     os.execute("mkdir -p "..home.."/.config/ASC/notes")
+else
+    f:close()
+    g:close()
 end
 
 --main
