@@ -58,10 +58,25 @@ end
 
 function writeData(tab,datafile)
 	local f=io.open(datafile,"w")
-	for i=1,#tab do
+	addPading(tab)
+    for i=1,#tab do
 		f:write("$",tab[i],"\n")
 	end
     f:close()
+end
+
+function addPading(tab) --ajoute des espaces au début de chaque ligne de chaque élément de tab
+    for i=1,#tab do
+        local new = " "
+        for j=1,#tab[i] do
+            if tab[i]:sub(j,j) == "\n" then
+                new = new.."\n "
+            else
+                new = new..tab[i]:sub(j,j)
+            end
+        end
+        tab[i] = new
+    end
 end
 
 function read(rebbotfile,datafile)
