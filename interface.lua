@@ -30,7 +30,9 @@ function readF(self)
 end listFonc["readF"]=readF
 
 function del(self)
-  delelement(self.data,self.numDelArg)
+    if self.numDelArg then
+        delelement(self.data,self.numDelArg)
+    end
 end listFonc["del"]=del
 
 --verification de l'instalation
