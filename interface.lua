@@ -1,12 +1,8 @@
-#!/usr/local/bin/lua
-
 f=io.popen("echo $HOME","r") --récupération du nom du sossier maison
 home=f:read()
 f:close()
 
 listFonc = {reboot = home.."/.config/ASC/notes/reset" , data = home.."/.config/ASC/notes/data"} --initialisation et recherche du nom des fichier utiles. Dans data se trouvent les notes et reset sert à savoir si on peut utiliser l'argument read.
-
-dofile("/usr/local/share/ASCnotes/fonctions.luac")
 
 function ajout(self)    --fonctions pour comuniquer avec fonctions.lua 
   local str=""
@@ -34,7 +30,7 @@ function readF(self)
 end listFonc["readF"]=readF
 
 function del(self)
-  delelement(self.data,tonumber(arg[2]))
+  delelement(self.data,self.numDelArg)
 end listFonc["del"]=del
 
 --verification de l'instalation
@@ -47,9 +43,12 @@ else
     g:close()
 end
 
---main
-if listFonc[arg[1]] then
-  listFonc[arg[1]](listFonc)
-else
-  io.stdout:write("add to take a note \nreadF to read your notes \ndel n to delete the nth note \nreset to reuse read \nread to read your notes if you used reset beforeand\n")
+function main(commande,valeur)
+    listFonc.numDelArg = tonumber(valeur)
+    if listFonc[commande] then
+      listFonc[commande](listFonc)
+    else
+      io.stderr:write("add to take a note \nreadF to read your notes \ndel n to delete the nth note \nreset to reuse read \nread to read your notes if you used reset beforeand\n")
+    end
 end
+
