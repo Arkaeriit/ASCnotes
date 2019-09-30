@@ -9,9 +9,9 @@ fonctions.luac : fonctions.lua
 
 install :
 	mkdir -p /usr/local/share/ASCnotes
-	mv interface.luac /usr/local/share/ASCnotes
-	mv fonctions.luac /usr/local/share/ASCnotes
-	mv ASCnotes /usr/local/bin
+	cp -f interface.luac /usr/local/share/ASCnotes
+	cp -f fonctions.luac /usr/local/share/ASCnotes
+	cp -f ASCnotes /usr/local/bin
 
 clean : 
 	rm -f ASCnotes
