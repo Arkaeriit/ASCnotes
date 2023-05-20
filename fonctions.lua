@@ -83,6 +83,7 @@ end
 -- ar falsy to force reading
 function read(datafile, time_to_wait)
     local tab=getData(datafile)
+    print(time_to_wait, allowed_to_print(tab))
     if allowed_to_print(tab) or not time_to_wait then
         io.write("_____ASCnotes_______________\n")
         for i=1,#tab do

@@ -20,10 +20,6 @@ function readO(self)
   read(self.data, self.numArg)
 end listFonc["read"]=readO
 
-function readF(self)
-    read(self.data, nil)
-end listFonc["readF"]=readF
-
 function del(self)
     if self.numArg then
         delelement(self.data,self.numArg)
@@ -44,7 +40,7 @@ function main(commande, valeur, time_to_wait)
     if listFonc[commande] then
       listFonc[commande](listFonc)
     else
-      io.stderr:write("add to take a note \nreadF to read your notes \ndel <n> to delete the nth note \nread <time to wait> to read your notes and wait before beaing allowed again to read\n")
+      io.stderr:write("add to take a note \nread to read your notes \ndel <n> to delete the nth note \nread <time to wait> to read your notes and wait before beaing allowed again to read\n")
     end
 end
 

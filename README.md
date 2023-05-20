@@ -8,9 +8,9 @@ To install this program just do
 make && sudo make install
 ```
 The basic way to use this program are the following:
-* Use `ASCnotes add`:   take a note
-* Use `ASCnotes readF`: read your notes
-* Use `ASCnotes del n`: delete the n-th note you took
+* Use `ASCnotes add`:     take a note
+* Use `ASCnotes read`:    read your notes
+* Use `ASCnotes del <n>`: delete the n-th note you took
 
 
 To use the program automaticaly, as I intended, there is more option:
