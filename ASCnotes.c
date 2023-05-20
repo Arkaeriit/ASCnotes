@@ -12,6 +12,10 @@ int main(int argc,char** argv){
 
     luaL_dofile(L,"/usr/local/share/ASCnotes/fonctions.luac");
     luaL_dofile(L,"/usr/local/share/ASCnotes/interface.luac");
+    luaL_dofile(L,"/usr/local/ASCnotes/fonctions.luac");
+    luaL_dofile(L,"/usr/local/ASCnotes/interface.luac");
+    luaL_dofile(L,"fonctions.lua");
+    luaL_dofile(L,"interface.lua");
     
     lua_getglobal(L,"main");
     if(argc == 2){
