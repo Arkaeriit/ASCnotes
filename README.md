@@ -8,21 +8,17 @@ To install this program just do
 make && sudo make install
 ```
 The basic way to use this program are the following:
-* Use `ASCnotes add`       to take a note
-* Use `ASCnotes readF`    to read your notes
-* Use `ASCnotes del n`    to delete the n-th note you took
+* Use `ASCnotes add`:   take a note
+* Use `ASCnotes readF`: read your notes
+* Use `ASCnotes del n`: delete the n-th note you took
 
 
 To use the program automaticaly, as I intended, there is more option:
-* Use `ASCnotes read `    to read your notes once
-* Use `ASCnotes reset`    to be able to read your notes using the read option again
+* Use `ASCnotes read <time to wait in seconds>`: read your notes. If you do this command again, nothing will be shown untin the time to wait has expired.
 
 To use this progral I put 
 ```bash
-ASCnotes read 
+ASCnotes read 21600
 ```
-in my .bashrc file and I crate a cron jobs which use the command
-```bash
-ASCnotes reset
-```
-every time I restart my computer and every 6 hours
+in my .bashrc file. Thus, my notes are read once every 6 hours.
+

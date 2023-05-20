@@ -2,7 +2,7 @@ f=io.popen("echo $HOME","r") --récupération du nom du sossier maison
 home=f:read()
 f:close()
 
-listFonc = {reboot = home.."/.config/ASC/notes/reset" , data = home.."/.config/ASC/notes/data"} --initialisation et recherche du nom des fichier utiles. Dans data se trouvent les notes et reset sert à savoir si on peut utiliser l'argument read.
+listFonc = {data = home.."/.config/ASC/notes/data"} --initialisation et recherche du nom des fichier utiles. Dans data se trouvent les notes.
 
 function ajout(self)    --fonctions pour comuniquer avec fonctions.lua 
   local str=""
@@ -16,41 +16,35 @@ function ajout(self)    --fonctions pour comuniquer avec fonctions.lua
 end listFonc["add"]=ajout
 listFonc["ajout"]=ajout
 
-function resetO(self)
-  reset(self.reboot)
-end listFonc["reset"]=resetO
-
 function readO(self)
-  read(self.reboot,self.data)
+  read(self.data, self.numArg)
 end listFonc["read"]=readO
 
 function readF(self)
-    resetO(self)
-    readO(self)
+    read(self.data, nil)
 end listFonc["readF"]=readF
 
 function del(self)
-    if self.numDelArg then
-        delelement(self.data,self.numDelArg)
+    if self.numArg then
+        delelement(self.data,self.numArg)
     end
 end listFonc["del"]=del
 
 --verification de l'instalation
-f = io.open(listFonc.reboot,"r")
-g = io.open(listFonc.data,"r")
-if not(g and f) then
+f = io.open(listFonc.data,"r")
+if not(f) then
     os.execute("mkdir -p "..home.."/.config/ASC/notes")
+    writeData({time = "0"}, listFonc.data)
 else
     f:close()
-    g:close()
 end
 
-function main(commande,valeur)
-    listFonc.numDelArg = tonumber(valeur)
+function main(commande, valeur, time_to_wait)
+    listFonc.numArg = tonumber(valeur)
     if listFonc[commande] then
       listFonc[commande](listFonc)
     else
-      io.stderr:write("add to take a note \nreadF to read your notes \ndel n to delete the nth note \nreset to reuse read \nread to read your notes if you used reset beforeand\n")
+      io.stderr:write("add to take a note \nreadF to read your notes \ndel <n> to delete the nth note \nread <time to wait> to read your notes and wait before beaing allowed again to read\n")
     end
 end
 
