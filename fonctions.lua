@@ -99,7 +99,9 @@ end
 -- Check the datafile if the printing can be made
 function allowed_to_print(data)
     local limit = tonumber(data.time)
-    return limit < os.time()
+    local limit_passed = limit < os.time()
+    local content = #data > 0
+    return limit_passed and content
 end
 
 
